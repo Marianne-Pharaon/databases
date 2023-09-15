@@ -1,0 +1,46 @@
+
+<html>
+
+USE schoolDB;
+SHOW DATABASES;
+INSERT INTO teachers(id, first_name, last_name, subject)
+VALUES (1, 'John', 'Doe', 'Math'),
+      (2, 'Jane', 'Smith', 'Science'); 
+      SHOW TABLES;
+      DESCRIBE teachers;
+select * from teachers;
+SELECT first_name, subject FROM teachers;
+CREATE TABLE students(
+   id INT PRIMARY KEY,
+   first_name VARCHAR(50),
+   last_name VARCHAR(50),
+   teacher_id INT
+);
+INSERT INTO students(id, first_name, last_name, teacher_id)
+VALUES (1, 'Alice', 'Brown', 1),
+      (2, 'Bob', 'Johnson', 2);
+  
+  
+SELECT students.first_name AS student_first_name,
+      students.last_name AS student_last_name,
+      teachers.first_name AS teacher_first_name,
+      teachers.last_name AS teacher_last_name
+FROM students
+INNER JOIN teachers ON students.teacher_id = teachers.id;
+
+
+
+SELECT students.first_name AS student_first_name,
+      students.last_name AS student_last_name,
+      teachers.first_name AS teacher_first_name,
+      teachers.last_name AS teacher_last_name
+FROM students
+LEFT JOIN teachers ON students.teacher_id = teachers.id;
+
+SELECT students.first_name AS student_first_name,
+      students.last_name AS student_last_name,
+      teachers.first_name AS teacher_first_name,
+      teachers.last_name AS teacher_last_name
+FROM students
+RIGHT JOIN teachers ON students.teacher_id = teachers.id;
+</html>
